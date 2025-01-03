@@ -10,6 +10,29 @@
 	<script>
 		function secondHighest(arr) {
 			//Write your code here
+			 // Handle edge cases
+    if (arr.length < 2) return -Infinity;
+
+    // Convert all elements to numbers
+    arr = arr.map(Number);
+
+    // Initialize variables for highest and second highest
+    let first = -Infinity;
+    let second = -Infinity;
+
+    for (let num of arr) {
+        if (num > first) {
+            // Update both first and second
+            second = first;
+            first = num;
+        } else if (num > second && num < first) {
+            // Update second only if num is distinct
+            second = num;
+        }
+    }
+
+    // If no valid second highest value, return -Infinity
+    return second === -Infinity ? -Infinity : second;
 			
 		}
 
